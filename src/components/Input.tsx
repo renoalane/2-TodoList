@@ -1,8 +1,14 @@
+import { ChangeEvent } from "react";
 import styled from "styled-components";
+
+// Define a more flexible onChange type
+type OnChangeHandler = (event: ChangeEvent<HTMLInputElement>) => void;
 
 interface InputProps {
   name: string;
   placeHolder: string;
+  value: string;
+  onChange: OnChangeHandler;
 }
 
 const InputSection = styled.input`
@@ -14,8 +20,16 @@ const InputSection = styled.input`
   width: 100%;
 `;
 
-const Input = ({ name, placeHolder }: InputProps) => {
-  return <InputSection type="text" name={name} placeholder={placeHolder} />;
+const Input = ({ name, placeHolder, value, onChange }: InputProps) => {
+  return (
+    <InputSection
+      type="text"
+      name={name}
+      placeholder={placeHolder}
+      onChange={onChange}
+      value={value}
+    />
+  );
 };
 
 export default Input;
