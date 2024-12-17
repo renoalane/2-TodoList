@@ -15,8 +15,8 @@ Simple To-Do List is intended for you to save what you will do today or in the f
 
 [Live Demo](https://simple-todo-list-hazel.vercel.app/)
 
-![Project Screenshot](<img width="960" alt="project1" src="https://github.com/user-attachments/assets/f82d82d0-0cfa-4a21-b7b1-8ed5ac22e0bb" />
-)
+<img width="960" alt="project1" src="https://github.com/user-attachments/assets/b9a98400-6385-4a35-a3ce-e6599889bd9a" />
+
 
 ## 🛠 Tech Stack
 
