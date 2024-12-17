@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Input from "../components/Input";
-import ListTodo, { Todo } from "../components/ListTodo";
-
-const tempData: Todo[] = [];
+import ListTodo from "../components/ListTodo";
+import { AddListTodo, DeleteAllListTodo } from "../hooks/useTodo";
+import { ChangeEvent, useState } from "react";
+import { useTodo } from "../TodoContext";
 
 const WrapperLandingPage = styled.div`
   font-size: 0.6em;
@@ -28,27 +29,47 @@ const Button = styled.button`
 `;
 
 const LandingPage = () => {
+  const [todo, setTodo] = useState<string>("");
+
+  const { setTodos } = useTodo();
+
+  function handleChangeTodo(e: ChangeEvent<HTMLInputElement>) {
+    setTodo(e.target.value);
+  }
+
   // Hanlde Add
   function handleAddTodo() {
-    console.log("Successfull Add");
+    if (todo.trim()) {
+      const newTodos = AddListTodo(todo);
+      setTodos(newTodos);
+    } else {
+      alert("Input The Name of Todo First");
+    }
+    setTodo("");
   }
 
   // Handle Delete All List
   function handleClearAllTodo() {
     const conf = confirm("Clear All Todo ?");
     if (conf) {
-      console.log("Success Delete All");
+      const newTodos = DeleteAllListTodo();
+      setTodos(newTodos);
     }
   }
 
   return (
     <WrapperLandingPage>
       <WrapperInputForm>
-        <Input name="todo" placeHolder="Input New Todo" />
+        <Input
+          name="todo"
+          placeHolder="Input New Todo"
+          value={todo}
+          onChange={handleChangeTodo}
+        />
         <Button onClick={handleAddTodo}>Add</Button>
         <Button onClick={handleClearAllTodo}>Clear</Button>
       </WrapperInputForm>
-      <ListTodo todos={tempData} />
+      <ListTodo />
     </WrapperLandingPage>
   );
 };

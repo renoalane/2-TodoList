@@ -1,19 +1,12 @@
 import styled from "styled-components";
 import Loader from "./Loader";
-
-interface PropsDataTodo {
-  todos: Todo[];
-}
-
-export interface Todo {
-  id: number;
-  name: string;
-  status: boolean;
-}
+import { DeleteListTodo, UpdateStatusListTodo } from "../hooks/useTodo";
+import { useTodo } from "../TodoContext";
 
 const TableList = styled.table`
   margin-top: 1em;
   border-collapse: collapse;
+  box-sizing: border-box;
 `;
 
 const TrHeadFoot = styled.tr`
@@ -46,7 +39,22 @@ const BadgeStatus = styled.p<{
   text-align: center;
 `;
 
-const ListTodo = ({ todos = [] }: PropsDataTodo) => {
+const ListTodo = () => {
+  const { todos, setTodos } = useTodo();
+
+  const handleChangeStatus = (id: number) => {
+    const newTodos = UpdateStatusListTodo(id);
+    setTodos(newTodos);
+  };
+
+  const handleDeleteTodo = (id: number) => {
+    const conf = confirm("Are you sure want to delete this todo");
+    if (conf) {
+      const newTodos = DeleteListTodo(id);
+      setTodos(newTodos);
+    }
+  };
+
   return (
     <TableList border={1} cellPadding={8} width={"100%"}>
       <thead>
@@ -57,8 +65,8 @@ const ListTodo = ({ todos = [] }: PropsDataTodo) => {
         </TrHeadFoot>
       </thead>
       <tbody>
-        {todos.length ? (
-          todos.map((todo) => (
+        {todos?.length ? (
+          todos?.map((todo) => (
             <tr
               key={todo.id}
               style={{
@@ -81,11 +89,18 @@ const ListTodo = ({ todos = [] }: PropsDataTodo) => {
               </td>
               <td>
                 {todo.status ? (
-                  <ButtonAction>On Progress</ButtonAction>
+                  <ButtonAction onClick={() => handleChangeStatus(todo.id)}>
+                    On Progress
+                  </ButtonAction>
                 ) : (
-                  <ButtonAction>Done</ButtonAction>
+                  <ButtonAction onClick={() => handleChangeStatus(todo.id)}>
+                    Done
+                  </ButtonAction>
                 )}
-                <ButtonAction $inputBackGroundColor="#FFB6C1">
+                <ButtonAction
+                  $inputBackGroundColor="#FFB6C1"
+                  onClick={() => handleDeleteTodo(todo.id)}
+                >
                   Delete
                 </ButtonAction>
               </td>
