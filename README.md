@@ -11,6 +11,12 @@ Simple To-Do List is intended for you to save what you will do today or in the f
 - Change Todo Status
 - Delete Todo
 
+## Demo
+
+[Live Demo](https://simple-todo-list-hazel.vercel.app/)
+
+![Project Screenshot]()
+
 ## 🛠 Tech Stack
 
 - Typescript
