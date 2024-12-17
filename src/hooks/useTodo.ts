@@ -16,12 +16,13 @@ export const AddListTodo = (name: string) => {
 
   todos.push(newTodo);
   localStorage.setItem("todos", JSON.stringify(todos));
-  return "Successfull Add";
+  return todos;
 };
 
 export const DeleteAllListTodo = () => {
   localStorage.clear();
-  return "Successfull DElete All List Todo";
+  const todos = GetListTodo();
+  return todos;
 };
 
 export const UpdateStatusListTodo = (id: number) => {
@@ -30,12 +31,12 @@ export const UpdateStatusListTodo = (id: number) => {
     todo.id === id ? { ...todo, status: !todo.status } : todo,
   );
   localStorage.setItem("todos", JSON.stringify(newTodos));
-  return "Succesfull Update";
+  return newTodos;
 };
 
 export const DeleteListTodo = (id: number) => {
   const todos = GetListTodo();
   const newTodos = todos.filter((todo: Todo) => todo.id != id);
   localStorage.setItem("todos", JSON.stringify(newTodos));
-  return "Successfull Delete";
+  return newTodos;
 };
