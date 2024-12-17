@@ -30,7 +30,7 @@ Clone The Repository
 
 ```bash
   git clone https://github.com/renoalane/2-TodoList.git
-  cd project-namet
+  cd project-name
 ```
 
 Install Dependencies
