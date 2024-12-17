@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import AppLayout from "./layouts/AppLayout";
 import LandingPage from "./pages/LandingPage";
+import { TodoProvider } from "./TodoContext";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <TodoProvider>
+      <RouterProvider router={router} />
+    </TodoProvider>
+  );
 }
 
 export default App;
