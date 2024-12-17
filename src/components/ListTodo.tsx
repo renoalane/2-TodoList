@@ -59,9 +59,9 @@ const ListTodo = () => {
     <TableList border={1} cellPadding={8} width={"100%"}>
       <thead>
         <TrHeadFoot>
-          <td width={"75%"}>Todo</td>
+          <td width={"70%"}>Todo</td>
           <td width={"10%"}>Status</td>
-          <td width={"15%"}>Action</td>
+          <td width={"20%"}>Action</td>
         </TrHeadFoot>
       </thead>
       <tbody>

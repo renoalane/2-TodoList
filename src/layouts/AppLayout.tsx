@@ -11,10 +11,15 @@ const WrapperDiv = styled.div`
   box-shadow: 0.3em 0.3em #ddd;
 `;
 
+// MAIN
+const MainDiv = styled.main`
+  min-height: 87vh;
+`;
+
 const AppLayout = () => {
   return (
-    <div>
-      <main>
+    <div style={{ minHeight: "90vh" }}>
+      <MainDiv>
         {/* HEADER */}
         <WrapperDiv>
           <Header />
@@ -24,8 +29,8 @@ const AppLayout = () => {
           <Outlet />
         </WrapperDiv>
         {/* FOOTER */}
-        <Footer />
-      </main>
+      </MainDiv>
+      <Footer />
     </div>
   );
 };
