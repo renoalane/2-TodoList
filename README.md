@@ -15,7 +15,8 @@ Simple To-Do List is intended for you to save what you will do today or in the f
 
 [Live Demo](https://simple-todo-list-hazel.vercel.app/)
 
-![Project Screenshot]()
+<img width="960" alt="project1" src="https://github.com/user-attachments/assets/b9a98400-6385-4a35-a3ce-e6599889bd9a" />
+
 
 ## 🛠 Tech Stack
 
@@ -29,7 +30,7 @@ Clone The Repository
 
 ```bash
   git clone https://github.com/renoalane/2-TodoList.git
-  cd project-namet
+  cd project-name
 ```
 
 Install Dependencies
