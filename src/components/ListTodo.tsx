@@ -39,6 +39,11 @@ const BadgeStatus = styled.p<{
   text-align: center;
 `;
 
+const NameDoneTodo = styled.span`
+  color: #9e7171;
+  text-decoration: line-through;
+`;
+
 const ListTodo = () => {
   const { todos, setTodos } = useTodo();
 
@@ -75,7 +80,13 @@ const ListTodo = () => {
                 lineHeight: "1.4em",
               }}
             >
-              <td>{todo.name}</td>
+              <td>
+                {todo.status ? (
+                  <NameDoneTodo>{todo.name}</NameDoneTodo>
+                ) : (
+                  <span>{todo.name}</span>
+                )}
+              </td>
               <td>
                 {todo.status ? (
                   <BadgeStatus $inputBackGroundColor="#B0E0E6">
